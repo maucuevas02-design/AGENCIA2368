@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <!--
+  ===========================================================
+  🟢 DATOS EDITABLES (buscá y reemplazá lo indicado)
+  - Teléfono/WhatsApp: reemplazar XXXXXXXXXX en todos los "https://wa.me/XXXXXXXXXX"
+  - Email visible: buscar "agencia@example.com" y reemplazar
+  - Formspree: reemplazar "https://formspree.io/f/XXXXXXXX" por tu endpoint
+  - Dirección/Mapa: editar el <iframe> de Google Maps con tus coordenadas o dirección
+  - Nombre Agencia: buscar "Agencia de Quiniela Córdoba" y cambiar
+  - Horarios: editar la tabla en la sección "Horarios"
+  - Juegos/Servicios: podés agregar/ocultar cards en "Juegos"
+  - Imágenes galería y portada: reemplazá las URLs por las tuyas
+  ===========================================================
+  Instrucciones rápidas:
+  1) Guardá este archivo como index.html y abrilo con doble clic.
+  2) Para publicar gratis: Netlify Drop, GitHub Pages o Vercel (ver pasos al final).
+  ===========================================================
+  -->
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Agencia de Quiniela Córdoba — Juegos oficiales, recargas y más</title>
+  <meta name="description" content="Agencia de Quiniela en Córdoba Capital. Jugá Quini 6, Telebingo, Toto Bingo, Quiniela tradicional, recargas y pagos. Fotos reales del local, horarios y ubicación.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Agencia de Quiniela Córdoba" />
+  <meta property="og:description" content="Juegos oficiales: Quiniela, Quini 6, Telebingo, Toto Bingo y más. ¡Te esperamos!" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1518544801976-3e188ed69225?auto=format&fit=crop&w=1200&q=80" />
+  <meta property="og:type" content="website" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root { --verde:#16a34a; }
+    body { font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; }
+    .fade { opacity:0; transform:translateY(14px); transition:all .6s ease; }
+    .fade.visible { opacity:1; transform:translateY(0); }
+    .focus-ring:focus { outline: 3px solid #16a34a55; outline-offset: 2px; }
+    /* Lightbox simple */
+    .lightbox { display:none; position:fixed; inset:0; background:rgba(0,0,0,.9); z-index:50; align-items:center; justify-content:center; padding:1rem; }
+    .lightbox img { max-width:95vw; max-height:85vh; border-radius:0.75rem; }
+    .btn { transition:transform .05s ease, box-shadow .2s ease; }
+    .btn:active { transform:translateY(1px); }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 selection:bg-green-200/70">
+
+  <!-- ======= Header / Nav ======= -->
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-gray-200">
+    <nav class="max-w-7xl mx-auto px-4 md:px-6 py-3 flex items-center justify-between">
+      <a href="#inicio" class="flex items-center gap-2 font-bold text-lg text-green-700">
+        <span class="text-2xl">🍀</span>
+        <span>Agencia de Quiniela Córdoba</span>
+      </a>
+      <ul class="hidden md:flex items-center gap-5 text-sm">
+        <li><a class="hover:text-green-700 focus-ring" href="#juegos">Juegos</a></li>
+        <li><a class="hover:text-green-700 focus-ring" href="#galeria">Galería</a></li>
+        <li><a class="hover:text-green-700 focus-ring" href="#horarios">Horarios</a></li>
+        <li><a class="hover:text-green-700 focus-ring" href="#ubicacion">Ubicación</a></li>
+        <li><a class="hover:text-green-700 focus-ring" href="#contacto">Contacto</a></li>
+      </ul>
+      <a href="https://wa.me/XXXXXXXXXX?text=Hola!%20Quiero%20jugar%20un%20n%C3%BAmero%20%F0%9F%8E%B2%20o%20consultar%20por%20Quini%206."
+         class="btn inline-flex items-center gap-2 bg-green-600 text-white text-sm font-semibold px-4 py-2 rounded-lg shadow hover:bg-green-700 focus-ring">
+        <span>WhatsApp</span> <span aria-hidden="true">➡️</span>
+      </a>
+    </nav>
+  </header>
+
+  <!-- ======= Hero ======= -->
+  <section id="inicio" class="relative">
+    <div class="absolute inset-0">
+      <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80"
+           alt="Mostrador de atención" class="w-full h-[420px] md:h-[520px] object-cover opacity-70" loading="lazy">
+    </div>
+    <div class="relative max-w-7xl mx-auto h-[420px] md:h-[520px] px-4 md:px-6 flex items-center">
+      <div class="bg-white/90 backdrop-blur p-6 md:p-8 rounded-2xl shadow-lg fade">
+        <h1 class="text-3xl md:text-5xl font-extrabold text-green-700 leading-tight">
+          Jugá en tu <span class="text-gray-900">agencia de confianza</span>
+        </h1>
+        <p class="mt-3 md:mt-4 text-gray-700 max-w-2xl">
+          Quini 6, Telebingo, Toto Bingo, Quiniela tradicional, recargas y más. ¡Atención rápida y asesoramiento para tus jugadas!
+        </p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="#juegos" class="btn bg-white border border-gray-300 text-gray-900 px-5 py-3 rounded-xl hover:shadow focus-ring">Ver juegos</a>
+          <a href="https://wa.me/XXXXXXXXXX?text=Hola!%20Quiero%20hacer%20una%20jugada%20o%20consultar%20resultados%20%F0%9F%8E%B2"
+             class="btn bg-green-600 text-white px-5 py-3 rounded-xl shadow hover:bg-green-700 focus-ring">Jugar por WhatsApp</a>
+        </div>
+        <p class="mt-4 text-xs text-gray-600">+18 | Juego responsable. Si necesitás ayuda: 0800-666-6006 (Líneas de orientación provincial).</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= Juegos / Servicios ======= -->
+  <section id="juegos" class="max-w-7xl mx-auto px-4 md:px-6 py-16">
+    <h2 class="text-3xl md:text-4xl font-bold text-green-700 mb-2 fade">Juegos oficiales y servicios</h2>
+    <p class="text-gray-600 mb-8 fade">Todo lo que podés jugar en la agencia. Consultá horarios de sorteos y modalidades.</p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Quiniela Tradicional -->
+      <article class="bg-white rounded-2xl p-6 shadow hover:shadow-lg transition fade">
+        <div class="text-4xl mb-3">🎲</div>
+        <h3 class="font-semibold text-lg">Quiniela Tradicional</h3>
+        <p class="text-sm text-gray-600 mt-1">Elegí tu número y el sorteo (Primera, Matutina, Vespertina, Nocturna). Jugadas simples y combinadas.</p>
+        <div class="mt-4 flex gap-2">
+          <a class="text-sm underline text-green-700 focus-ring" href="https://wa.me/XXXXXXXXXX?text=Hola,%20quiero%20jugar%20a%20la%20Quiniela%20%F0%9F%8E%B2">Jugar por WhatsApp</a>
+        </div>
+      </article>
+
+      <!-- Quini 6 -->
+      <article class="bg-white rounded-2xl p-6 shadow hover:shadow-lg transition fade">
+        <div class="text-4xl mb-3">🏆</div>
+        <h3 class="font-semibold text-lg">Quini 6</h3>
+        <p class="text-sm text-gray-600 mt-1">El clásico de los pozos millonarios. Tradicional, Segunda y Revancha. Elegí tus 6 números.</p>
+        <div class="mt-4 flex gap-2">
+          <a class="text-sm underline text-green-700 focus-ring" href="https://wa.me/XXXXXXXXXX?text=Hola,%20quiero%20jugar%20Quini%206">Consultar pozo</a>
+        </div>
+      </article>
+
+      <!-- Telebingo -->
+      <article class="bg-white rounded-2xl p-6 shadow hover:shadow-lg transition fade">
+        <div class="text-4xl mb-3">📺</div>
+        <h3 class="font-semibold text-lg">Telebingo</h3>
+        <p class="text-sm text-gray-600 mt-1">Animate al bingo televisado. Cartones, premios y sorteos programados.</p>
+        <div class="mt-4 flex gap-2">
+          <a class="text-sm underline text-green-700 focus-ring" href="https://wa.me/XXXXXXXXXX?text=Hola,%20consulto%20por%20Telebingo">Cartones disponibles</a>
+        </div>
+      </article>
+
+      <!-- Toto Bingo -->
+      <article class="bg-white rounded-2xl p-6 shadow hover:shadow-lg transition fade">
+        <div class="text-4xl mb-3">🎟️</div>
+        <h3 class="font-semibold text-lg">Toto Bingo</h3>
+        <p class="text-sm text-gray-600 mt-1">Comprá tu cartón y participá por autos, casas y premios en efectivo.</p>
+        <div class="mt-4 flex gap-2">
+          <a class="text-sm underline text-green-700 focus-ring" href="https://wa.me/XXXXXXXXXX?text=Hola,%20quiero%20Toto%20Bingo">Quiero mi cartón</a>
+        </div>
+      </article>
+
+      <!-- Jugada común (número simple) -->
+      <article class="bg-white rounded-2xl p-6 shadow hover:shadow-lg transition fade">
+        <div class="text-4xl mb-3">🔢</div>
+        <h3 class="font-semibold text-lg">Jugada común</h3>
+        <p class="text-sm text-gray-600 mt-1">Elegí tu numerito, definí el importe y listo. Te asesoramos con probabilidades y sorteos.</p>
+        <div class="mt-4 flex gap-2">
+          <a class="text-sm underline text-green-700 focus-ring" href="https://wa.me/XXXXXXXXXX?text=Hola,%20quiero%20hacer%20una%20jugada%20simple">Hacer jugada</a>
+        </div>
+      </article>
+
+      <!-- Recargas y Pagos -->
+      <article class="bg-white rounded-2xl p-6 shadow hover:shadow-lg transition fade">
+        <div class="text-4xl mb-3">💳</div>
+        <h3 class="font-semibold text-lg">Recargas & Pagos</h3>
+        <p class="text-sm text-gray-600 mt-1">Pago de servicios, recargas de celular y otros trámites rápidos en caja.</p>
+        <div class="mt-4 flex gap-2">
+          <a class="text-sm underline text-green-700 focus-ring" href="https://wa.me/XXXXXXXXXX?text=Hola,%20consulta%20por%20recargas%20y%20pagos">Consultar</a>
+        </div>
+      </article>
+    </div>
+
+    <!-- Aviso Juego Responsable -->
+    <div class="mt-8 p-4 bg-green-50 border border-green-200 rounded-xl fade">
+      <p class="text-sm text-gray-700">
+        <strong>Juego responsable:</strong> Sólo para mayores de 18 años. Jugá moderado. Si necesitás ayuda, llamá al 0800-666-6006.
+      </p>
+    </div>
+  </section>
+
+  <!-- ======= Galería ======= -->
+  <section id="galeria" class="max-w-7xl mx-auto px-4 md:px-6 py-16">
+    <h2 class="text-3xl md:text-4xl font-bold text-green-700 mb-2 fade">Galería del local</h2>
+    <p class="text-gray-600 mb-8 fade">Algunas fotos de la agencia. Podés reemplazar estas imágenes por las tuyas.</p>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <!-- Reemplazar src por tus fotos (pueden ser locales o URLs) -->
+      <img class="rounded-xl shadow hover:shadow-lg cursor-zoom-in fade" src="https://images.unsplash.com/photo-1554995207-c18c203602cb?auto=format&fit=crop&w=800&q=70" alt="Mostrador de atención" loading="lazy" onclick="openLightbox(this.src, this.alt)">
+      <img class="rounded-xl shadow hover:shadow-lg cursor-zoom-in fade" src="https://images.unsplash.com/photo-1526547541286-73a7aaa6b7a3?auto=format&fit=crop&w=800&q=70" alt="Sala de espera" loading="lazy" onclick="openLightbox(this.src, this.alt)">
+      <img class="rounded-xl shadow hover:shadow-lg cursor-zoom-in fade" src="https://images.unsplash.com/photo-1520256862855-398228c41684?auto=format&fit=crop&w=800&q=70" alt="Cartelería" loading="lazy" onclick="openLightbox(this.src, this.alt)">
+      <img class="rounded-xl shadow hover:shadow-lg cursor-zoom-in fade" src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=70" alt="Sector de cajas" loading="lazy" onclick="openLightbox(this.src, this.alt)">
+      <img class="rounded-xl shadow hover:shadow-lg cursor-zoom-in fade" src="https://images.unsplash.com/photo-1541534401786-2077eed87a72?auto=format&fit=crop&w=800&q=70" alt="Exterior de la agencia" loading="lazy" onclick="openLightbox(this.src, this.alt)">
+      <img class="rounded-xl shadow hover:shadow-lg cursor-zoom-in fade" src="https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&w=800&q=70" alt="Equipamiento" loading="lazy" onclick="openLightbox(this.src, this.alt)">
+      <img class="rounded-xl shadow hover:shadow-lg cursor-zoom-in fade" src="https://images.unsplash.com/photo-1515165562835-c3b8c8e0b4a6?auto=format&fit=crop&w=800&q=70" alt="Detalle interior" loading="lazy" onclick="openLightbox(this.src, this.alt)">
+      <img class="rounded-xl shadow hover:shadow-lg cursor-zoom-in fade" src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=800&q=70" alt="Cartones y boletos" loading="lazy" onclick="openLightbox(this.src, this.alt)">
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Vista ampliada de imagen">
+    <button class="absolute top-5 right-5 text-white text-2xl focus-ring" aria-label="Cerrar" onclick="closeLightbox()">✕</button>
+    <img id="lightboxImg" src="" alt="">
+    <p id="lightboxCaption" class="text-white mt-3 text-center"></p>
+  </div>
+
+  <!-- ======= Horarios y Sorteos ======= -->
+  <section id="horarios" class="max-w-7xl mx-auto px-4 md:px-6 py-16">
+    <h2 class="text-3xl md:text-4xl font-bold text-green-700 mb-2 fade">Horarios</h2>
+    <p class="text-gray-600 mb-6 fade">Abrimos de lunes a sábado. Consultá días feriados por WhatsApp.</p>
+
+    <div class="overflow-x-auto bg-white rounded-2xl shadow fade">
+      <table class="min-w-full text-sm">
+        <thead class="bg-green-600 text-white">
+          <tr>
+            <th class="text-left px-4 py-3">Día</th>
+            <th class="text-left px-4 py-3">Horario</th>
+            <th class="text-left px-4 py-3">Notas</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y">
+          <tr class="hover:bg-gray-50"><td class="px-4 py-3">Lunes a Viernes</td><td class="px-4 py-3">09:00–13:30 / 16:30–20:30</td><td class="px-4 py-3">Última jugada 10 min antes del sorteo</td></tr>
+          <tr class="hover:bg-gray-50"><td class="px-4 py-3">Sábado</td><td class="px-4 py-3">09:00–13:30 / 17:00–20:00</td><td class="px-4 py-3">Consultar especiales</td></tr>
+          <tr class="hover:bg-gray-50"><td class="px-4 py-3">Domingo</td><td class="px-4 py-3">Cerrado</td><td class="px-4 py-3">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="mt-6 p-4 bg-gray-100 rounded-xl fade">
+      <p class="text-sm text-gray-700">Sorteos habituales: Primera 12:00, Matutina 15:00, Vespertina 18:00, Nocturna 21:00 (referencia). Verificá horarios vigentes.</p>
+    </div>
+  </section>
+
+  <!-- ======= Ubicación ======= -->
+  <section id="ubicacion" class="max-w-7xl mx-auto px-4 md:px-6 py-16">
+    <h2 class="text-3xl md:text-4xl font-bold text-green-700 mb-2 fade">Dónde estamos</h2>
+    <p class="text-gray-600 mb-6 fade">Córdoba Capital — Zona céntrica, fácil acceso y múltiples líneas de colectivo.</p>
+
+    <div class="grid md:grid-cols-2 gap-6 items-start">
+      <div class="fade">
+        <iframe
+          title="Mapa de la agencia"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6835.46099284716!2d-64.1887764!3d-31.4200832!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x943295ad3e27b0f9%3A0x81cf50c2fca7e845!2sC%C3%B3rdoba%20Capital!5e0!3m2!1ses-419!2sar!4v1700000000000"
+          width="100%" height="320" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen>
+        </iframe>
+      </div>
+      <div class="fade">
+        <div class="bg-white rounded-2xl p-6 shadow">
+          <h3 class="font-semibold text-lg">Dirección</h3>
+          <p class="text-sm text-gray-700 mt-1">San Jerónimo 1234, Centro, Córdoba Capital (ejemplo)</p>
+
+          <h3 class="font-semibold text-lg mt-5">Contacto rápido</h3>
+          <ul class="text-sm text-gray-700 mt-1 space-y-1">
+            <li>📱 <a class="underline text-green-700 focus-ring" href="https://wa.me/XXXXXXXXXX?text=Hola!%20Estoy%20yendo%20a%20la%20agencia.">WhatsApp</a></li>
+            <li>📧 <a class="underline text-green-700 focus-ring" href="mailto:agencia@example.com">agencia@example.com</a></li>
+            <li>📸 <a class="underline text-green-700 focus-ring" href="#" aria-label="Instagram de la agencia">Instagram</a></li>
+          </ul>
+
+          <a href="#contacto" class="btn mt-5 inline-flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg shadow hover:bg-green-700 focus-ring">
+            Escribinos
+            <span aria-hidden="true">✍️</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= Preguntas Frecuentes ======= -->
+  <section class="max-w-7xl mx-auto px-4 md:px-6 py-16">
+    <h2 class="text-3xl md:text-4xl font-bold text-green-700 mb-6 fade">Preguntas frecuentes</h2>
+    <div class="grid md:grid-cols-2 gap-4">
+      <details class="bg-white p-5 rounded-2xl shadow fade">
+        <summary class="font-semibold cursor-pointer">¿Puedo jugar por WhatsApp?</summary>
+        <p class="mt-2 text-gray-700 text-sm">Sí. Escribinos por WhatsApp para reservar tu jugada y retirarla en el local según normativa vigente.</p>
+      </details>
+      <details class="bg-white p-5 rounded-2xl shadow fade">
+        <summary class="font-semibold cursor-pointer">¿Hasta qué hora aceptan jugadas?</summary>
+        <p class="mt-2 text-gray-700 text-sm">Tomamos jugadas hasta unos minutos antes de cada sorteo. Consultá horarios del día.</p>
+      </details>
+      <details class="bg-white p-5 rounded-2xl shadow fade">
+        <summary class="font-semibold cursor-pointer">¿Se puede pagar con tarjeta/QR?</summary>
+        <p class="mt-2 text-gray-700 text-sm">Sí, trabajamos con medios electrónicos y QR. Verificá disponibilidad por juego.</p>
+      </details>
+      <details class="bg-white p-5 rounded-2xl shadow fade">
+        <summary class="font-semibold cursor-pointer">¿Qué documentación se necesita para premios?</summary>
+        <p class="mt-2 text-gray-700 text-sm">Para premios mayores se requiere DNI y validaciones según reglamento del juego.</p>
+      </details>
+      <details class="bg-white p-5 rounded-2xl shadow fade">
+        <summary class="font-semibold cursor-pointer">¿Hacen recargas y pagos de servicios?</summary>
+        <p class="mt-2 text-gray-700 text-sm">Sí. Realizamos recargas telefónicas y cobro de boletas habilitadas.</p>
+      </details>
+      <details class="bg-white p-5 rounded-2xl shadow fade">
+        <summary class="font-semibold cursor-pointer">¿Tienen estacionamiento cercano?</summary>
+        <p class="mt-2 text-gray-700 text-sm">Hay cocheras privadas y espacios en la zona. Recomendamos venir con tiempo en horarios pico.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ======= Contacto ======= -->
+  <section id="contacto" class="bg-gray-100">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 py-16">
+      <div class="grid md:grid-cols-2 gap-8 items-start">
+        <div class="fade">
+          <h2 class="text-3xl md:text-4xl font-bold text-green-700">Contacto</h2>
+          <p class="text-gray-700 mt-2">Escribinos para reservas, consultas de pozo o resultados.</p>
+          <div class="mt-5 flex flex-wrap gap-3">
+            <a href="https://wa.me/XXXXXXXXXX?text=Hola!%20Quiero%20hacer%20una%20consulta%20sobre%20juegos."
+               class="btn inline-flex items-center gap-2 bg-green-600 text-white px-5 py-3 rounded-xl shadow hover:bg-green-700 focus-ring">
+               📱 WhatsApp
+            </a>
+            <a href="mailto:agencia@example.com"
+               class="btn inline-flex items-center gap-2 bg-white border border-gray-300 px-5 py-3 rounded-xl hover:shadow focus-ring">
+               ✉️ Enviar Email
+            </a>
+          </div>
+
+          <div class="mt-6 p-4 bg-white rounded-xl shadow">
+            <h3 class="font-semibold">Redes</h3>
+            <a class="underline text-green-700 text-sm focus-ring" href="#">Instagram</a>
+          </div>
+        </div>
+
+        <form action="https://formspree.io/f/XXXXXXXX" method="POST" class="bg-white rounded-2xl p-6 shadow fade" aria-labelledby="formTitle">
+          <h3 id="formTitle" class="font-semibold text-lg">Dejanos tu mensaje</h3>
+          <p class="text-sm text-gray-600 mb-4">Respondemos a la brevedad.</p>
+
+          <label class="block text-sm font-medium" for="nombre">Nombre</label>
+          <input id="nombre" name="nombre" type="text" required class="mt-1 w-full border rounded-lg px-3 py-2 focus-ring" autocomplete="name">
+
+          <label class="block text-sm font-medium mt-4" for="email">Email</label>
+          <input id="email" name="email" type="email" required class="mt-1 w-full border rounded-lg px-3 py-2 focus-ring" autocomplete="email">
+
+          <label class="block text-sm font-medium mt-4" for="telefono">Teléfono</label>
+          <input id="telefono" name="telefono" type="tel" class="mt-1 w-full border rounded-lg px-3 py-2 focus-ring" autocomplete="tel">
+
+          <label class="block text-sm font-medium mt-4" for="mensaje">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" rows="4" required class="mt-1 w-full border rounded-lg px-3 py-2 focus-ring"></textarea>
+
+          <button type="submit" class="btn mt-5 w-full bg-green-600 text-white py-3 rounded-lg shadow hover:bg-green-700 focus-ring">Enviar</button>
+          <p class="text-xs text-gray-500 mt-2">Al enviar aceptás ser contactado para información de juegos y servicios.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= Footer ======= -->
+  <footer class="bg-green-700 text-white">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 py-8">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div>
+          <p class="font-semibold">Agencia de Quiniela Córdoba</p>
+          <p class="text-sm text-green-100">Centro, Córdoba Capital</p>
+        </div>
+        <div class="text-sm text-green-100">
+          <p>+18 | Juego responsable | Este sitio es informativo y promocional.</p>
+        </div>
+      </div>
+      <div class="mt-4 text-xs text-green-100/90">
+        © 2025 • Todos los derechos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======= JS ======= -->
+  <script>
+    // Animaciones on-scroll
+    const faders = document.querySelectorAll('.fade');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: .12 });
+    faders.forEach(el => io.observe(el));
+
+    // Lightbox
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightboxImg');
+    const lbCaption = document.getElementById('lightboxCaption');
+    function openLightbox(src, alt) {
+      lbImg.src = src; lbImg.alt = alt || "";
+      lbCaption.textContent = alt || "";
+      lb.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      lb.style.display = 'none';
+      document.body.style.overflow = '';
+      lbImg.src = '';
+    }
+    lb.addEventListener('click', (e) => { if (e.target === lb) closeLightbox(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && lb.style.display === 'flex') closeLightbox(); });
+
+    // Accesibilidad: focus visible para links con teclado
+    document.querySelectorAll('a, button, input, textarea, summary').forEach(el=>{
+      el.addEventListener('keyup', e => { if (e.key === 'Tab') el.classList.add('focus-ring'); });
+    });
+  </script>
+
+  <!--
+  ===========================================================
+  🟢 Publicar tu sitio (rápido y gratis)
+  1) Netlify Drop: https://app.netlify.com/drop → arrastrá index.html y listo (te da un link público).
+  2) GitHub Pages: subí index.html a un repo → Settings → Pages → elegí "main" y guardá.
+  3) Vercel: https://vercel.com → New Project → "Deploy" y arrastrá el archivo.
+  Consejo: Antes de publicar, cambiá WhatsApp, email, mapa e imágenes por los tuyos.
+  ===========================================================
+  -->
+</body>
+</html>
